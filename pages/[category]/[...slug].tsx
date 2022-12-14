@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { useRouter } from "next/router"
 import client from "../../apollo-client";
 import Image from 'next/image';
+import React from "react";
 
 function DynamicPage({postDetail}:any) {
   var post = postDetail;
@@ -41,12 +42,15 @@ export async function getStaticProps(context: { params: {
   [x: string]: any; slug: any; 
 }; }) {
 
-  const slug = context?.params.slug
-  console.log(context);
+  let slug = context?.params.slug
+  const category_in_url = context?.params.category
+  
+  slug = slug.join("/");
+  console.log(slug);
   const { data } = await client.query({
     query: gql`
     query NewQuery {
-      postBy(slug:"${slug}") {
+      postBy(uri:"${slug}") {
         title
         content
         featuredImage {
@@ -65,7 +69,8 @@ export async function getStaticProps(context: { params: {
     }
     `,
   });
-  if(data.postBy){
+  const category_of_post = data.postBy.categories.nodes[0].slug
+  if(data.postBy && category_of_post == category_in_url){
     return {
       props: {
         postDetail: data.postBy,

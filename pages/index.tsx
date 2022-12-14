@@ -17,15 +17,15 @@ function Blog({ posts1 }:any) {
     <>
     <h1>Danh sach bai viet</h1>
     {
-        posts.map((post: any,index: number) =>  (
-            <>
+        posts.map((post: any,index:number) =>  (
+
             <div className="item" key={"item-"+index}>
-              <Link href={`/post${post.uri}`} passHref={true}>
+              <Link href={`/post${post.uri}`}>
                   <h1>{post.title}</h1>
                   <div className="content" dangerouslySetInnerHTML={{__html: post.content}} />
               </Link>
             </div>
-            </>
+
         ))
     }
     </>
