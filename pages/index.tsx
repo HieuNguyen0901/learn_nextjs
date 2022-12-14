@@ -13,14 +13,17 @@ function Blog({ posts1 }:any) {
   //   query: { sub_id,utm_source },
   // } = router
   var posts = posts1?.nodes;
+  
+  
   return (
     <>
     <h1>Danh sach bai viet</h1>
     {
         posts.map((post: any,index:number) =>  (
-
+          
             <div className="item" key={"item-"+index}>
-              <Link href={`/post${post.uri}`}>
+              
+              <Link href={`/${post.terms?.nodes.slug}${post.uri}`}>
                   <h1>{post.title}</h1>
                   <div className="content" dangerouslySetInnerHTML={{__html: post.content}} />
               </Link>
@@ -42,6 +45,11 @@ export async function getStaticProps() {
             content
             title
             uri
+            terms {
+              nodes {
+                slug
+              }
+            }
           }
         }
       }
