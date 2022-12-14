@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import client from "../../apollo-client";
 import Image from 'next/image';
 import React from "react";
+import Header from "../../components/header";
 
 function DynamicPage({postDetail}:any) {
   var post = postDetail;
@@ -10,6 +11,7 @@ function DynamicPage({postDetail}:any) {
   // console.log(post);
   return (
     <>
+      <Header logo={""} />
       <h1>{post?.title}</h1>
       <div className="content" dangerouslySetInnerHTML={ {__html: post?.content}} />
       <Image 
