@@ -2,35 +2,14 @@ import { useState } from 'react'
 
 function learn_useState(){
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [info, setInfo] = useState({
-        name:'Nguyen Van A',
-        age: '18'
-    })
-    
-    const handleUpdate = () =>{
-        // setInfo({
-        //     ...info,
-        //     bio: 'Yeu mau hong'
-        // })
-
-        // setInfo(prev => ({
-        //     ...prev,
-        //     bio: 'Yeu mau hong'
-        // }))
-
-        setInfo(prev => {
-            //logic
-            return{
-                ...prev,
-                bio: 'Yeu mau hong'    
-            }
-        })
+    const [counter, setCounter] = useState(1)
+    const handleIncrease = () =>{
+        setCounter(counter + 1)
     }
-    
     return(
         <div className="App" style={{ padding:20 }}>
-            <h1>{JSON.stringify(info)}</h1>
-            <button onClick={handleUpdate}>Update</button>
+            <h1>{counter}</h1>
+            <button onClick={handleIncrease}>Increase</button>
         </div>
     );
 }
