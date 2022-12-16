@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import client from "../../apollo-client";
 import Image from 'next/image';
 import React from "react";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 
 function DynamicPage({postDetail}:any) {
   var post = postDetail;

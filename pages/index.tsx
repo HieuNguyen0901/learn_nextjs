@@ -13,8 +13,7 @@ function Blog({ posts1 }:any) {
   //   query: { sub_id,utm_source },
   // } = router
   var posts = posts1?.nodes;
-  
-  
+
   return (
     <>
     <h1>Danh sach bai viet</h1>

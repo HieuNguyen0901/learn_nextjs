@@ -1,0 +1,6 @@
+input[type="submit"] {
+    background-color: green;
+    color: red;
+    cursor: pointer;
+    border: none;
+}
